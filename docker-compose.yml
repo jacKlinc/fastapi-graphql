@@ -4,20 +4,23 @@ services:
         ports:
             - "8000:8000"
         depends_on:
-            dynamo:
+            db:
                 condition: service_healthy
-    dynamo:
-        image: amazon/dynamodb-local:latest
-        container_name: dynamodb
+    db:
+        image: postgres:latest
+        restart: always
+        environment:
+            POSTGRES_USER: myuser
+            POSTGRES_PASSWORD: mypassword
+            POSTGRES_DB: restaurants
         ports:
-            - "8001:8000"
+            - "5434:5432"
         volumes:
-            - dynamodb_data:/home/dynamodb/data
+            - postgres_data:/var/lib/postgresql/data
         healthcheck:
-            test: ["CMD-SHELL", "curl -s http://localhost:8000/ || exit 1"]
+            test: ["CMD-SHELL", "pg_isready -U myuser -d restaurants"]
             interval: 5s
-            timeout: 5s
-            retries: 3
+            retries: 5
 
 volumes:
-    dynamodb_data:
+    postgres_data:
