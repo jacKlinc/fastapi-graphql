@@ -1,0 +1,23 @@
+services:
+    api:
+        build: .
+        ports:
+            - "8000:8000"
+        depends_on:
+            dynamo:
+                condition: service_healthy
+    dynamo:
+        image: amazon/dynamodb-local:latest
+        container_name: dynamodb
+        ports:
+            - "8001:8000"
+        volumes:
+            - dynamodb_data:/home/dynamodb/data
+        healthcheck:
+            test: ["CMD-SHELL", "curl -s http://localhost:8000/ || exit 1"]
+            interval: 5s
+            timeout: 5s
+            retries: 3
+
+volumes:
+    dynamodb_data:
