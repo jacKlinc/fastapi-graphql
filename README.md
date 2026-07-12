@@ -1,8 +1,8 @@
 # fastapi-graphql
-GraphQL API implemented in FastAPI
+GraphQL API implemented in FastAPI. This [repo's predecessor](https://github.com/jacKlinc/fastapi-hw), aimed to find imaginary climbing routes near Canmore. This repo aims to do the same but for restaurants in Vancouver. 
 
 
-## Running
+### Running
 
 ```bash
 # Start Postgres
@@ -15,8 +15,23 @@ uv run uvicorn app.main:app --reload
 uv run strawberry dev app.schema
 ```
 
+## Design
 
-## Theory
+### Tool choice
+
+Strawberry was chosen instead of graphene due to it being supported out-of-the-box in FastAPI.
+
+Recommended VS Code extension: `vscode-graphql-syntax`
+
+### Schema
+
+`strawberry export-schema schema:schema > schema.graphql`
+
+
+
+---
+
+## GraphQL Theory
 ### Schema
 
 Structurally the same as an SQL schema where
