@@ -102,3 +102,19 @@ def get_posts():
 class Query:
     posts: List[Post] = strawberry.field(resolver=get_posts)
 ```
+
+### SDL (Storage Definition Language)
+
+Similar to SQL's DDL where it describes what must be stored in a database table
+
+**Difference**: 
+1. SDL describes what the client can request
+2. SDL describes graph-like relationships as opposed to DDL's flat, matrix 
+
+
+Approaches:
+1. Schema-first
+2. Code-first
+
+**Strawberry only supports code-first**
+
