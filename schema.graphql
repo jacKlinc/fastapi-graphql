@@ -1,33 +1,34 @@
-# enums
-enum Cuisine {
-    ITALIAN
-    INDIAN
-}
-
 enum Course {
-    STARTER
-    MAIN
-    DESSERT
+  STARTER
+  MAIN
+  DESSERT
 }
 
 enum Cuisine {
-    VEGAN
-    VEGGIE
+  ITALIAN
+  INDIAN
 }
 
-# types
-type Restaurant {
-    id: ID!
-    name: String!
-    cuisine: Cuisine!
-    menu: [MenuItem]!
-    lat: Float!
-    lon: Float!
+enum Diet {
+  VEGAN
+  VEGGIE
 }
 
 type MenuItem {
-    name: String!
-    price: Float!
-    course: Course!
-    diet: Diet
+  name: String!
+  price: Float!
+  course: Course!
+  diet: Diet
+}
+
+type Query {
+  restaurants: [Restaurant!]!
+}
+
+type Restaurant {
+  name: String!
+  cuisine: Cuisine!
+  menu: [MenuItem!]!
+  lat: Float!
+  lon: Float!
 }

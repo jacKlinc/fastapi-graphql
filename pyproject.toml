@@ -12,3 +12,8 @@ dependencies = [
     "strawberry-graphql[cli,fastapi]>=0.320.4",
     "uvicorn>=0.51.0",
 ]
+
+[tool.pylint.messages_control]
+disable = [
+    "too-few-public-methods",
+]

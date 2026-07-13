@@ -25,7 +25,7 @@ Recommended VS Code extension: `vscode-graphql-syntax`
 
 ### Schema
 
-`strawberry export-schema schema:schema > schema.graphql`
+`strawberry export-schema app.api.schema:schema > schema.graphql`
 
 
 
