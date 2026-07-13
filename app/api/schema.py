@@ -5,6 +5,9 @@ from enum import Enum
 import strawberry
 
 
+from app.common.types import Cuisine, Course, Diet
+
+
 # NOTE: types
 @strawberry.type
 class Restaurant:
@@ -13,24 +16,6 @@ class Restaurant:
     menu: List[MenuItem]
     lat: float
     lon: float
-    # geohash: # TODO
-
-
-class Cuisine(Enum):
-    ITALIAN = "italian"
-    INDIAN = "indian"
-    # TODO: add more
-
-
-class Course(Enum):
-    STARTER = "starter"
-    MAIN = "main"
-    DESSERT = "dessert"
-
-
-class Diet(Enum):
-    VEGAN = "vegan"
-    VEGGIE = "veggie"
 
 
 @strawberry.type
